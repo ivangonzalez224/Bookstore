@@ -1,6 +1,5 @@
 const Categories = () => (
-    <div className="main-categories">
-    </div>
-  );
-  
-  export default Categories;
+  <div className="main-categories" />
+);
+
+export default Categories;

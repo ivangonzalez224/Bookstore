@@ -1,13 +1,16 @@
+import PropTypes from 'prop-types';
 import BooksItem from './BooksItem';
 
-const BooksList = ({ booksProps }) => {
-    return (
-      <ul>
-        {booksProps.map((book) => (
-            <BooksItem key={book.id} itemProp={book} />
-        ))}
-      </ul>
-    );
-  };
+const BooksList = ({ booksProps }) => (
+  <ul className="bookList_container">
+    {booksProps.map((book) => (
+      <BooksItem key={book.id} itemProp={book} />
+    ))}
+  </ul>
+);
 
-  export default BooksList;
+BooksList.propTypes = {
+  booksProps: PropTypes.string.isRequired,
+};
+
+export default BooksList;

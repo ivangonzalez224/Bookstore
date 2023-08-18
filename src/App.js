@@ -2,6 +2,7 @@ import { Route, Routes, NavLink } from 'react-router-dom';
 import './App.css';
 import Categories from './pages/Categories';
 import Books from './pages/Books';
+import userIcon from './images/userIcon.png';
 
 const links = [
   { path: '/', text: 'Books' },
@@ -13,14 +14,17 @@ const titleStyles = { color: '#0290ff', fontSize: '1.875rem', fontFamily: 'Monts
 const App = () => (
   <div className="main-container">
     <nav>
-    <h1 style={titleStyles}>Bookstore CMS</h1>
-      <ul>
-        {links.map((link) => (
-          <li key={link.text}>
-            <NavLink to={link.path}>{link.text}</NavLink>
-          </li>
-        ))}
-      </ul>
+      <h1 style={titleStyles}>Bookstore CMS</h1>
+      <div className="nav_top">
+        <ul>
+          {links.map((link) => (
+            <li key={link.text}>
+              <NavLink to={link.path}>{link.text}</NavLink>
+            </li>
+          ))}
+        </ul>
+        <img src={userIcon} alt="user icon" />
+      </div>
     </nav>
     <section>
       <Routes>

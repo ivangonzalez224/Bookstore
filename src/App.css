@@ -1,38 +1,137 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.main-container {
+  width: 100%;
+  height: 100vh;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
+}
+
+nav {
+  width: 87.5rem;
+  height: 5.938rem;
+  margin: 0 0 2.375rem;
+  padding: 1.438rem 6.188rem 1.688rem 6.25rem;
+  background-color: #fff;
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+nav h1 {
+  width: 15rem;
+  height: 2.313rem;
+  margin: 0.375rem 2.938rem 0.125rem 0;
+  font-size: 1.875rem;
+  font-weight: bold;
+  color: #0290ff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav_top {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+}
+
+nav ul li {
+  margin-left: 2.938rem;
+  list-style: none;
+}
+
+nav ul li a {
+  text-decoration: none;
+  width: 3.688rem;
+  height: 1rem;
+  margin: 1.125rem 2.563rem 0.688rem 0;
+  font-size: 0.813rem;
+  color: #121212;
+}
+
+nav img {
+  width: 1.813rem;
+  height: 1.813rem;
+}
+
+.bookList_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.bookList_container li {
+  list-style: none;
+  margin-bottom: 0.938rem;
+  padding: 2rem 1.688rem 1.75rem 1.688rem;
+  display: flex;
+  width: 70rem;
+  background-color: #fff;
+  border: solid 1px #e8e8e8;
+}
+
+.data-container {
+  width: 50%;
+}
+
+.data_list {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons_list {
+  display: flex;
+}
+
+.buttons_list button {
+  padding: 0.188rem 0.938rem;
+  margin: 0.188rem 0.938rem 0.125rem 0;
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: #4386bf;
+  border: none;
+  border-right: 0.125rem solid #e8e8e8;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.progress_mainContainer {
+  display: flex;
+  margin-right: 4.938rem;
+}
+
+.progress_dataContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.current_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.current_top {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.438rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 1.81rem 2.55rem;
+}
+
+.form_inputs {
+  display: flex;
+}
+
+.form_inputs li {
+  list-style: none;
+  margin-right: 2.125rem;
+}
+
+.input_title input {
+  width: 41.5rem;
 }
