@@ -6,11 +6,11 @@ import { addBook } from '../redux/books/booksSlice';
 const InputBook = () => {
   const dispatch = useDispatch();
   const [newBook, setNewBook] = useState({
-    id: nanoid(),
+    item_id: nanoid(),
     title: '',
     completed: '0%',
     author: '',
-    category: 'no categorie',
+    category: 'no category',
     chapters: '1',
   });
 
@@ -25,10 +25,8 @@ const InputBook = () => {
   const handleAdd = () => {
     dispatch(addBook(newBook));
     setNewBook({
-      title: '',
       completed: '0%',
-      author: '',
-      category: 'no categorie',
+      category: 'no category',
       chapters: '1',
     });
   };
@@ -38,10 +36,10 @@ const InputBook = () => {
       <h3>ADD NEW BOOK</h3>
       <ul className="form_inputs">
         <li className="input_title">
-          <input type="text" placeholder="Book title" value={newBook.title} onChange={handleChange} />
+          <input type="text" placeholder="Book title" onChange={handleChange} />
         </li>
         <li>
-          <input type="text" placeholder="Author" value={newBook.author} onChange={handleChange} />
+          <input type="text" placeholder="Author" onChange={handleChange} />
         </li>
         <li>
           <button
