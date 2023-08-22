@@ -3,14 +3,14 @@ import { useDispatch } from 'react-redux';
 import { removeBook } from '../redux/books/booksSlice';
 
 const BooksItem = ({
-  id, categorie, title, author, completed, chapter,
+  itemId, category, title, author, completed, chapter,
 }) => {
   const dispatch = useDispatch();
   return (
     <li>
       <div className="data-container">
         <div className="data_list">
-          <span>{categorie}</span>
+          <span>{category}</span>
           <span>{title}</span>
           <span>{author}</span>
         </div>
@@ -19,7 +19,7 @@ const BooksItem = ({
           <button
             type="submit"
             onClick={() => {
-              dispatch(removeBook(id));
+              dispatch(removeBook(itemId));
             }}
           >
             Remove
@@ -45,8 +45,8 @@ const BooksItem = ({
 };
 
 BooksItem.propTypes = {
-  id: PropTypes.string.isRequired,
-  categorie: PropTypes.string.isRequired,
+  itemId: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   chapter: PropTypes.string.isRequired,
