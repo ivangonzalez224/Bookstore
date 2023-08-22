@@ -1,4 +1,4 @@
-import BooksLogic from '../components/BooksLogic';
+import BooksLogic from '../BooksLogic';
 
 const Books = () => (
   <div className="main-books">

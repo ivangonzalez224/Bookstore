@@ -1,4 +1,4 @@
-import CategoriesList from '../components/CategoriesList';
+import CategoriesList from '../CategoriesList';
 
 const Categories = () => (
   <div className="main-categories">

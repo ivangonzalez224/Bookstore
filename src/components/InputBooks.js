@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
-import { addBook } from '../features/books/booksSlice';
+import { addBook } from '../redux/books/booksSlice';
 
 const InputBook = () => {
   const dispatch = useDispatch();

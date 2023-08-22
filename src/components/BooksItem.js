@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { removeBook } from '../features/books/booksSlice';
+import { removeBook } from '../redux/books/booksSlice';
 
 const BooksItem = ({
   id, categorie, title, author, completed, chapter,
