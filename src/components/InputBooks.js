@@ -5,30 +5,28 @@ import { addBook } from '../redux/books/booksSlice';
 
 const InputBook = () => {
   const dispatch = useDispatch();
-  const [newBook, setNewBook] = useState({
-    item_id: nanoid(),
-    title: '',
-    completed: '0%',
-    author: '',
-    category: 'no category',
-    chapters: '1',
-  });
+  const [titleValue, setTitleValue] = useState('');
+  const [authorValue, setAuthorValue] = useState('');
 
   const handleChange = (e) => {
-    const { key, value } = e.target;
-    setNewBook((prevBook) => ({
-      ...prevBook,
-      [key]: value,
-    }));
+    if (e.target.placeholder === 'Book title') {
+      setTitleValue(e.target.value);
+    } else {
+      setAuthorValue(e.target.value);
+    }
   };
 
   const handleAdd = () => {
-    dispatch(addBook(newBook));
-    setNewBook({
+    dispatch(addBook({
+      itemId: nanoid(),
+      title: titleValue,
       completed: '0%',
-      category: 'no category',
-      chapters: '1',
-    });
+      author: authorValue,
+      category: ' ',
+      chapter: '1',
+    }));
+    setTitleValue('');
+    setAuthorValue('');
   };
 
   return (
@@ -36,10 +34,10 @@ const InputBook = () => {
       <h3>ADD NEW BOOK</h3>
       <ul className="form_inputs">
         <li className="input_title">
-          <input type="text" placeholder="Book title" onChange={handleChange} />
+          <input type="text" value={titleValue} placeholder="Book title" onChange={handleChange} />
         </li>
         <li>
-          <input type="text" placeholder="Author" onChange={handleChange} />
+          <input type="text" value={authorValue} placeholder="Author" onChange={handleChange} />
         </li>
         <li>
           <button
