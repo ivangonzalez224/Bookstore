@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { removeBook } from '../features/books/booksSlice';
 
@@ -41,6 +42,15 @@ const BooksItem = ({
       </div>
     </li>
   );
+};
+
+BooksItem.propTypes = {
+  id: PropTypes.string.isRequired,
+  categorie: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  chapter: PropTypes.string.isRequired,
+  completed: PropTypes.string.isRequired,
 };
 
 export default BooksItem;

@@ -8,8 +8,8 @@ const booksSlice = createSlice({
   name: 'book',
   initialState,
   reducers: {
-    addBook: (state) => {
-      state.bookItems = [];
+    addBook: (state, action) => {
+      state.bookItems.push(action.payload);
     },
     removeBook: (state, action) => {
       const itemId = action.payload;
