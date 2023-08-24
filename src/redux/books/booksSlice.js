@@ -52,6 +52,23 @@ export const createBook = createAsyncThunk(
   },
 );
 
+export const removeBook = createAsyncThunk(
+  'books/removeBook',
+  async (payload, { rejectWithValue }) => {
+    try {
+      const response = await axios.delete(
+        `https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/JX6HgfhVoknuk7ZGztbn/books/${payload.itemBookId}`,
+      );
+      if (!response) {
+        return Error('Error when deleting a book.');
+      }
+      return payload.itemBookId;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);
+
 const initialState = {
   bookItems: [],
   error: '',
@@ -78,6 +95,9 @@ const booksSlice = createSlice({
     });
     builder.addCase(createBook.fulfilled, (state, action) => {
       state.bookItems.push(action.payload);
+    });
+    builder.addCase(removeBook.fulfilled, (state, action) => {
+      state.bookItems = state.bookItems.filter((bookId) => bookId.item_id !== action.payload);
     });
   },
 });
