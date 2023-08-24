@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
-import { addBook } from '../redux/books/booksSlice';
+import { createBook } from '../redux/books/booksSlice';
 
 const InputBook = () => {
   const dispatch = useDispatch();
@@ -17,13 +17,16 @@ const InputBook = () => {
   };
 
   const handleAdd = () => {
-    dispatch(addBook({
-      itemId: nanoid(),
+    const arg = '';
+    const bookObject = {
+      item_id: nanoid(),
       title: titleValue,
-      completed: '0%',
       author: authorValue,
       category: ' ',
-      chapter: '1',
+    };
+    dispatch(createBook({
+      arg,
+      bookObject,
     }));
     setTitleValue('');
     setAuthorValue('');

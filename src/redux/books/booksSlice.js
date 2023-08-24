@@ -1,32 +1,42 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+
+export const getBooks = createAsyncThunk(
+  'books/getBooks',
+  async (arg, { rejectWithValue }) => {
+    try {
+      const response = await axios.get(
+        'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/JX6HgfhVoknuk7ZGztbn/books',
+      );
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);
+
+export const createBook = createAsyncThunk(
+  'books/createBook',
+  async (payload, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(
+        'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/JX6HgfhVoknuk7ZGztbn/books',
+        payload.bookObject,
+      );
+      if (!response) {
+        return Error('Error when creating a new book.');
+      }
+      return payload.bookObject;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);
 
 const initialState = {
-  bookItems: [
-    {
-      itemId: 'item1',
-      title: 'The Great Gatsby',
-      author: 'John Smith',
-      completed: '10%',
-      category: 'Fiction',
-      chapter: '1',
-    },
-    {
-      itemId: 'item2',
-      title: 'Anna Karenina',
-      author: 'Leo Tolstoy',
-      completed: '8%',
-      category: 'Fiction',
-      chapter: '2',
-    },
-    {
-      itemId: 'item3',
-      title: 'The Selfish Gene',
-      author: 'Richard Dawkins',
-      completed: '20%',
-      category: 'Nonfiction',
-      chapter: '4',
-    },
-  ],
+  bookItems: [],
+  error: '',
 };
 
 const booksSlice = createSlice({
@@ -41,7 +51,18 @@ const booksSlice = createSlice({
       state.bookItems = state.bookItems.filter((item) => item.itemId !== bookId);
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase(getBooks.fulfilled, (state, action) => {
+      state.bookItems = action.payload;
+    });
+    builder.addCase(getBooks.rejected, (state, action) => {
+      state.error = action.payload;
+    });
+    builder.addCase(createBook.fulfilled, (state, action) => {
+      state.bookItems.push(action.payload);
+    });
+  },
 });
 
-export const { addBook, removeBook } = booksSlice.actions;
+export const booksAction = booksSlice.actions;
 export default booksSlice.reducer;
