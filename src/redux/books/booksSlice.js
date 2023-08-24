@@ -8,8 +8,26 @@ export const getBooks = createAsyncThunk(
       const response = await axios.get(
         'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/JX6HgfhVoknuk7ZGztbn/books',
       );
-      const data = await response.json();
-      return data;
+      const data = await response;
+      const keyObject = Object.keys(data.data);
+      const dataRetieved = [];
+      keyObject.forEach((idBook) => {
+        const innerObject = Object.keys(data.data[idBook]);
+        innerObject.forEach((firstKey) => {
+          const myAuthor = data.data[idBook][firstKey].author;
+          const myTitle = data.data[idBook][firstKey].title;
+          const myCaregory = data.data[idBook][firstKey].category;
+          dataRetieved.push(
+            {
+              item_id: idBook,
+              author: myAuthor,
+              title: myTitle,
+              category: myCaregory,
+            },
+          );
+        });
+      });
+      return dataRetieved;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -48,7 +66,7 @@ const booksSlice = createSlice({
     },
     removeBook: (state, action) => {
       const bookId = action.payload;
-      state.bookItems = state.bookItems.filter((item) => item.itemId !== bookId);
+      state.bookItems = state.bookItems.filter((item) => item.item_id !== bookId);
     },
   },
   extraReducers: (builder) => {

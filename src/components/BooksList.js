@@ -1,9 +1,16 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { useSelector } from 'react-redux';
+import { React, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import BooksItem from './BooksItem';
+import { getBooks } from '../redux/books/booksSlice';
 
 const BooksList = () => {
+  const dispatch = useDispatch();
   const { bookItems } = useSelector((store) => store.books);
+
+  useEffect(() => {
+    dispatch(getBooks());
+  }, [dispatch]);
 
   if (bookItems.length < 1) {
     return (

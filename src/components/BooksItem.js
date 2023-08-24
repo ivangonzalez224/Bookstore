@@ -1,9 +1,11 @@
+/* eslint-disable camelcase */
+
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { booksAction } from '../redux/books/booksSlice';
 
 const BooksItem = ({
-  itemId, category, title, author, completed, chapter,
+  item_id, category, title, author, completed, chapter,
 }) => {
   const dispatch = useDispatch();
   return (
@@ -19,7 +21,7 @@ const BooksItem = ({
           <button
             type="submit"
             onClick={() => {
-              dispatch(booksAction.removeBook(itemId));
+              dispatch(booksAction.removeBook(item_id));
             }}
           >
             Remove
@@ -45,7 +47,7 @@ const BooksItem = ({
 };
 
 BooksItem.propTypes = {
-  itemId: PropTypes.string.isRequired,
+  item_id: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,

@@ -7,6 +7,8 @@ const InputBook = () => {
   const dispatch = useDispatch();
   const [titleValue, setTitleValue] = useState('');
   const [authorValue, setAuthorValue] = useState('');
+  const randomCategories = ['Adventure stories', 'Classics', 'Crime',
+    'Fantasy', 'Horror', 'Humour and satire', 'Sports'];
 
   const handleChange = (e) => {
     if (e.target.placeholder === 'Book title') {
@@ -18,11 +20,12 @@ const InputBook = () => {
 
   const handleAdd = () => {
     const arg = '';
+    const singleCategory = randomCategories[Math.floor(Math.random() * randomCategories.length)];
     const bookObject = {
       item_id: nanoid(),
       title: titleValue,
       author: authorValue,
-      category: ' ',
+      category: singleCategory,
     };
     dispatch(createBook({
       arg,
