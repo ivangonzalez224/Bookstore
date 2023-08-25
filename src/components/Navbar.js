@@ -2,8 +2,8 @@ import { NavLink } from 'react-router-dom';
 import userIcon from './images/userIcon.png';
 
 const links = [
-  { path: '/', text: 'Books' },
-  { path: 'categories', text: 'Categories' },
+  { path: '/', text: 'BOOKS' },
+  { path: 'categories', text: 'CATEGORIES' },
 ];
 
 const Navbar = () => (
