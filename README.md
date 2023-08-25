@@ -21,28 +21,32 @@
 - [🙏 Acknowledgements](#acknowledgements)
 - [📝 License](#license)
 
-# 📖 Math Magicians <a name="about-project"></a>
+# 📖 Bookstore <a name="about-project"></a>
 
-**Bookstore** is a web app using React to build the project.
+**Bookstore** is a web app using React to display, add and delete books in a order list.
 
 ## 🛠 Built With <a name="built-with"></a>
 
 1. React
+2. CSS
+3. JavaScript
 
 ### Tech Stack <a name="tech-stack"></a>
 
-In this project we use React to build bookstore web app.
+In this project we use React to build a bookstore web app.
 <details>
   <summary>Client</summary>
   <ul>
     <li><a href="https://es.react.dev/">React</a></li>
+    <li><a href="https://developer.mozilla.org/es/docs/Web/CSS">CSS</a></li>
+    <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript">JavaScript</a></li>
   </ul>
 </details>
 
 ### Key Features <a name="key-features"></a>
 
 - Add a professional README.md file.
-- Use React in order to build the whole project.
+- Use React & Redux in order to build the whole project.
 - Set up linters for the project.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -102,7 +106,7 @@ To run the project, do the following:
 
 ## 🛩️ Future Features <a name="future-features"></a>
 
-- Add a feature that allows to add better animations to the calculator buttons.
+- Add a feature that allows to add better animations to the buttons.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

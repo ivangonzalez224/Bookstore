@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
-import { addBook } from '../redux/books/booksSlice';
+import { createBook } from '../redux/books/booksSlice';
 
 const InputBook = () => {
   const dispatch = useDispatch();
   const [titleValue, setTitleValue] = useState('');
   const [authorValue, setAuthorValue] = useState('');
+  const randomCategories = ['Adventure stories', 'Classics', 'Crime',
+    'Fantasy', 'Horror', 'Humour and satire', 'Sports'];
 
   const handleChange = (e) => {
     if (e.target.placeholder === 'Book title') {
@@ -17,13 +19,17 @@ const InputBook = () => {
   };
 
   const handleAdd = () => {
-    dispatch(addBook({
-      itemId: nanoid(),
+    const arg = '';
+    const singleCategory = randomCategories[Math.floor(Math.random() * randomCategories.length)];
+    const bookObject = {
+      item_id: nanoid(),
       title: titleValue,
-      completed: '0%',
       author: authorValue,
-      category: ' ',
-      chapter: '1',
+      category: singleCategory,
+    };
+    dispatch(createBook({
+      arg,
+      bookObject,
     }));
     setTitleValue('');
     setAuthorValue('');
