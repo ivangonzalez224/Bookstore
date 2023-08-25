@@ -37,6 +37,7 @@ const InputBook = () => {
 
   return (
     <form>
+      <div id="formSeparator" />
       <h3>ADD NEW BOOK</h3>
       <ul className="form_inputs">
         <li className="input_title">

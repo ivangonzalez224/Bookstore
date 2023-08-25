@@ -3,6 +3,7 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { removeBook } from '../redux/books/booksSlice';
+import CircularProgressBar from './CircularProgressBar';
 
 const BooksItem = ({
   item_id, category, title, author, completed, chapter,
@@ -12,9 +13,9 @@ const BooksItem = ({
     <li>
       <div className="data-container">
         <div className="data_list">
-          <span>{category}</span>
-          <span>{title}</span>
-          <span>{author}</span>
+          <span id="dataCategory">{category}</span>
+          <span id="dataTitle">{title}</span>
+          <span id="dataAuthor">{author}</span>
         </div>
         <div className="buttons_list">
           <button type="submit">Comments</button>
@@ -34,15 +35,19 @@ const BooksItem = ({
         </div>
       </div>
       <div className="progress_mainContainer">
+        <CircularProgressBar />
         <div className="progress_dataContainer">
-          <span>{completed}</span>
-          <span>Completed</span>
+          <div className="progress_completed">
+            <span>{completed}</span>
+            <span>%</span>
+          </div>
+          <span id="progressWord">Completed</span>
         </div>
       </div>
       <div className="current_container">
         <div className="current_top">
-          <span>CURRENT CHAPTER</span>
-          <span>{chapter}</span>
+          <span id="currentWord">CURRENT CHAPTER</span>
+          <span id="currentChapter">{chapter}</span>
         </div>
         <button type="submit">UPDATE PROGRESS</button>
       </div>

@@ -16,13 +16,15 @@ export const getBooks = createAsyncThunk(
         innerObject.forEach((firstKey) => {
           const myAuthor = data.data[idBook][firstKey].author;
           const myTitle = data.data[idBook][firstKey].title;
-          const myCaregory = data.data[idBook][firstKey].category;
+          const myCategory = data.data[idBook][firstKey].category;
           dataRetieved.push(
             {
               item_id: idBook,
               author: myAuthor,
               title: myTitle,
-              category: myCaregory,
+              category: myCategory,
+              completed: 22,
+              chapter: 'Chapter 1',
             },
           );
         });
